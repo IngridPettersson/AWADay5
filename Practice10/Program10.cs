@@ -1,9 +1,9 @@
-﻿// skapa en array med två namn
-// Lägg till funktionalitet för att kunna lägga till ett namn i names. Namnet ska läggas sist i names.
-// Lägg till funktionalitet för att ta bort ett namn från names. Användaren ska ange det namn som
+﻿// 1. skapa en array med två namn
+// 2. Lägg till funktionalitet för att kunna lägga till ett namn i names. Namnet ska läggas sist i names.
+// 3. Lägg till funktionalitet för att ta bort ett namn från names. Användaren ska ange det namn som
 // ska tas bort.
-// Lägg till funktionalitet för att sortera namnen i names.
-// Testa med olika metoder för att sortera namnen. T.ex bubble sort och selection sort.
+// 4. Lägg till funktionalitet för att sortera namnen i names.
+// 5. Testa med olika metoder för att sortera namnen. T.ex bubble sort och selection sort.
 
 
 using System;
@@ -15,6 +15,7 @@ namespace Practice10
         static void Main(string[] args)
         {
             string[] names = new string[2] { "Adam", "Eva" };
+            string name;
 
             //names = AddName(names, "Strumpan");
             //PrintNames(names);
@@ -37,14 +38,12 @@ namespace Practice10
             Console.ReadLine();
             Console.Clear();
 
-            names = RemoveName(names, "Eva");
+            Console.Write("Enter name you want to remove: ");
+            name = Console.ReadLine();
+            names = RemoveName(names, name);
             PrintNames(names);
-
-
-
-
         }
-
+        #region
         private static string[] AddNameDifferently(string[] names, string name)
         {
             string[] temp = new string[names.Length + 1];
@@ -75,6 +74,7 @@ namespace Practice10
             }
             return temp;
         }
+        #endregion
 
         private static string[] RemoveName(string[] names, string name)
         {
@@ -83,13 +83,15 @@ namespace Practice10
 
             for (int i = 0; i < names.Length; i++)
             {
-                string removedName = name;
                 int indexRemovedName;
-
-                if (removedName == names[i])
+                string removedName;
+                if (names[i] == name)
                 {
+                    removedName = name;
+                    indexRemovedName = i;
                     string lastName = names[names.Length - 1];
                     temp[names.Length - 1] = removedName;
+
                 }
             }
 
